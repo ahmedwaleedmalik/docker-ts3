@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  teamspeak_server:
+    container_name: teamspeak-server
+    image: ahmedwaleedmalik/docker-ts3:latest
+    networks:
+      - shared_network
+    ports:
+      - 9987:9987/udp
+      - 10011:10011
+      - 30033:30033
+    volumes:
+      - ts3server/data:/teampspeak-data
+networks:
+  shared_network:
+    external:
+      name: teamspeak_shared_network
